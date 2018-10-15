@@ -16,7 +16,7 @@ public class DemoController {
 	
 	@RequestMapping("/prima")
 	public String hello(ModelMap map) {
-		City prima = cityRepo.findOne(20L);
+		City prima = cityRepo.findByName("Milano");
 		map.addAttribute("city", prima);
 		return "hello";
 	}
