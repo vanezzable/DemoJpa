@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="city")
+@Entity
 @Table(name="city")
 public class City {
 	
@@ -16,6 +16,12 @@ public class City {
 	
 	@Column(name="Name")
 	private String name;
+	
+	@Column(name="Population")
+	private Integer population;
+	
+	@Column(name="CountryCode")
+	private String codiceNazione;
 
 	public Long getId() {
 		return id;
@@ -32,6 +38,21 @@ public class City {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public Integer getPopulation() {
+		return population;
+	}
+
+	public void setPopulation(Integer population) {
+		this.population = population;
+	}
+
+	public String getCodiceNazione() {
+		return codiceNazione;
+	}
+
+	public void setCodiceNazione(String codiceNazione) {
+		this.codiceNazione = codiceNazione;
+	}
 	
 }
