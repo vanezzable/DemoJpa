@@ -6,15 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name="city")
+@Entity //Indica che questa classe e' un Entita' JPA
+@Table(name="city") //Indichiamo il nome della tabella a DB a cui fa riferimento questa entita
 public class City {
 	
-	@GeneratedValue
-	@Id
+	@GeneratedValue //Valore generato e assegnato dal DB
+	@Id //Indica che e' la chiave primaria
 	private Long id;
 	
-	@Column(name="Name")
+	@Column(name="Name") //Colonna relativa a DB
 	private String name;
 	
 	@Column(name="Population")

@@ -20,7 +20,8 @@ public class CityController {
 	
 	@GetMapping("/{id}/find")
 	public City findCityById(@PathVariable("id") Long id) {
-		City city = cityRepo.findOne(id);
+		City city = cityRepo.findOne(id); // Metodo offerto gratis da JPA
+		//Altri metodi offerti gratis sono save, delete, findAll, exists ...
 		return city;
 	}
 	
