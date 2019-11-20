@@ -13,6 +13,8 @@ public interface CityRepository extends JpaRepository<City, Long>{ //City e' il 
 	
 	public City findByName(String name); //Fare riferimento al link di Spring JPA
 	
+	public List<City> findByCodiceNazione(String codice);
+	
 	@Query(value="select c from City c where c.codiceNazione = 'ITA'") //Attenzione, JPA Query fa riferimento all'entity, quindi notare il 'c' e il codiceNazione 
 	public List<City> findItalianCities();
 	

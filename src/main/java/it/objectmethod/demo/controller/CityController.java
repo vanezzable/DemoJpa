@@ -31,6 +31,12 @@ public class CityController {
 		return city;
 	}
 	
+	@RequestMapping("/{countryCode}/find-by-country")
+	public List<City> findItalianCities(@PathVariable("countryCode") String countryCode) {
+		List<City> cities = cityRepo.findByCodiceNazione(countryCode);
+		return cities;
+	}
+	
 	@RequestMapping("/find-italian")
 	public List<City> findItalianCities() {
 		List<City> cities = cityRepo.findItalianCities();
