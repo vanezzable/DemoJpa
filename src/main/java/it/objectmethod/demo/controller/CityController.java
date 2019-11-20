@@ -31,8 +31,23 @@ public class CityController {
 		return city;
 	}
 	
+	@RequestMapping("/{id}/save")
+	public City saveMilano(@PathVariable("id") Long id) {
+		City city = cityRepo.findOne(id);
+		if(city != null) {
+			city.setName(city.getName() + "A");
+		} else {
+			city = new City();
+			city.setCodiceNazione("ITA");
+			city.setName("B");
+			city.setPopulation(1000);
+		}
+		city = cityRepo.save(city);
+		return city;
+	}
+	
 	@RequestMapping("/{countryCode}/find-by-country")
-	public List<City> findItalianCities(@PathVariable("countryCode") String countryCode) {
+	public List<City> findCitiesByCC(@PathVariable("countryCode") String countryCode) {
 		List<City> cities = cityRepo.findByCodiceNazione(countryCode);
 		return cities;
 	}
