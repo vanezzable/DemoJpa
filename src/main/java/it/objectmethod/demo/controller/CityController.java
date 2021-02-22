@@ -20,7 +20,7 @@ public class CityController {
 
 	@GetMapping("/{id}/find")
 	public City findCityById(@PathVariable("id") Long id) {
-		City city = cityRepo.findOne(id); // Metodo offerto gratis da JPA
+		City city = cityRepo.findById(id).get(); // Metodo offerto gratis da JPA
 		// Altri metodi offerti gratis sono save, delete, findAll, exists ...
 		return city;
 	}
@@ -33,7 +33,7 @@ public class CityController {
 
 	@RequestMapping("/{id}/save")
 	public City saveMilano(@PathVariable("id") Long id) {
-		City city = cityRepo.findOne(id);
+		City city = cityRepo.findById(id).get();
 		if (city != null) {
 			city.setName(city.getName() + "A");
 		} else {
