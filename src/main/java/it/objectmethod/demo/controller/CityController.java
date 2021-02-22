@@ -17,24 +17,24 @@ public class CityController {
 
 	@Autowired
 	private CityRepository cityRepo;
-	
+
 	@GetMapping("/{id}/find")
 	public City findCityById(@PathVariable("id") Long id) {
 		City city = cityRepo.findOne(id); // Metodo offerto gratis da JPA
-		//Altri metodi offerti gratis sono save, delete, findAll, exists ...
+		// Altri metodi offerti gratis sono save, delete, findAll, exists ...
 		return city;
 	}
-	
+
 	@RequestMapping("/find-milano")
 	public City findMilano() {
 		City city = cityRepo.findByName("Milano");
 		return city;
 	}
-	
+
 	@RequestMapping("/{id}/save")
 	public City saveMilano(@PathVariable("id") Long id) {
 		City city = cityRepo.findOne(id);
-		if(city != null) {
+		if (city != null) {
 			city.setName(city.getName() + "A");
 		} else {
 			city = new City();
@@ -45,17 +45,17 @@ public class CityController {
 		city = cityRepo.save(city);
 		return city;
 	}
-	
+
 	@RequestMapping("/{countryCode}/find-by-country")
 	public List<City> findCitiesByCC(@PathVariable("countryCode") String countryCode) {
 		List<City> cities = cityRepo.findByCodiceNazione(countryCode);
 		return cities;
 	}
-	
+
 	@RequestMapping("/find-italian")
 	public List<City> findItalianCities() {
 		List<City> cities = cityRepo.findItalianCities();
 		return cities;
 	}
-	
+
 }
