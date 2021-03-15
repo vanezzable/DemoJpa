@@ -3,24 +3,26 @@ package it.objectmethod.demo.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity //Indica che questa classe e' un Entita' JPA
-@Table(name="city") //Indichiamo il nome della tabella a DB a cui fa riferimento questa entita
+@Entity // Indica che questa classe e' un Entita' JPA
+@Table(name = "city") // Indichiamo il nome della tabella a DB a cui fa riferimento questa entita
 public class City {
-	
-	@GeneratedValue //Valore generato e assegnato dal DB
-	@Id //Indica che e' la chiave primaria
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	// Valore generato e assegnato dal DB
+	@Id // Indica che e' la chiave primaria
 	private Long id;
-	
-	@Column(name="Name") //Colonna relativa a DB
+
+	@Column(name = "Name") // Colonna relativa a DB
 	private String name;
-	
-	@Column(name="Population")
+
+	@Column(name = "Population")
 	private Integer population;
-	
-	@Column(name="CountryCode")
+
+	@Column(name = "CountryCode")
 	private String codiceNazione;
 
 	public Long getId() {
@@ -54,5 +56,5 @@ public class City {
 	public void setCodiceNazione(String codiceNazione) {
 		this.codiceNazione = codiceNazione;
 	}
-	
+
 }

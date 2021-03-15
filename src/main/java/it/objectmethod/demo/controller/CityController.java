@@ -33,8 +33,9 @@ public class CityController {
 
 	@RequestMapping("/{id}/save")
 	public City saveMilano(@PathVariable("id") Long id) {
-		City city = cityRepo.findById(id).get();
-		if (city != null) {
+		City city = null;
+		if (id > 0) {
+			city = cityRepo.findById(id).get();
 			city.setName(city.getName() + "A");
 		} else {
 			city = new City();
