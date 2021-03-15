@@ -55,7 +55,7 @@ public class CityController {
 
 	@RequestMapping("/find-italian")
 	public List<City> findItalianCities() {
-		List<City> cities = cityRepo.findItalianCities();
+		List<City> cities = cityRepo.findByCodiceNazione("ITA");
 		return cities;
 	}
 

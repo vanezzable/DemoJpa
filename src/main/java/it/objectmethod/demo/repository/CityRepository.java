@@ -16,9 +16,9 @@ public interface CityRepository extends JpaRepository<City, Long> { // City e' i
 
 	public List<City> findByCodiceNazione(String codice);
 
-	@Query(value = "select c from City c where c.codiceNazione = 'ITA'") // Attenzione, JPA Query fa riferimento
-																			// all'entity, quindi notare il 'c' e il
-																			// codiceNazione
-	public List<City> findItalianCities();
+	@Query(value = "select c from City c where c.codiceNazione = ?1") // Attenzione, JPA Query fa riferimento
+																		// all'entity, quindi notare il 'c' e il
+																		// codiceNazione
+	public List<City> findCitiesByCodiceNazione(String codNaz);
 
 }
