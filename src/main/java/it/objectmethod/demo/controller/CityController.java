@@ -1,6 +1,7 @@
 package it.objectmethod.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +21,14 @@ public class CityController {
 
 	@GetMapping("/{id}/find")
 	public City findCityById(@PathVariable("id") Long id) {
-		City city = cityRepo.findById(id).get(); // Metodo offerto gratis da JPA
+		Optional<City> optCity = cityRepo.findById(id);// Metodo offerto gratis da JPA
 		// Altri metodi offerti gratis sono save, delete, findAll, exists ...
+
+		City city = null;
+		if (optCity.isPresent()) {
+			city = optCity.get();
+		}
+
 		return city;
 	}
 
