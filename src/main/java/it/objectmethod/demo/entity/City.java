@@ -11,8 +11,7 @@ import javax.persistence.Table;
 @Table(name = "city") // Indichiamo il nome della tabella a DB a cui fa riferimento questa entita
 public class City {
 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	// Valore generato e assegnato dal DB
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Valore generato e assegnato dal DB
 	@Id // Indica che e' la chiave primaria
 	private Long id;
 

@@ -12,6 +12,7 @@ import it.objectmethod.demo.entity.City;
 public interface CityRepository extends JpaRepository<City, Long> { // City e' il riferimento alla entity gestita da
 																	// questa repo, Long e' il tipo dell'ID
 
+	// https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.query-creation
 	public City findByName(String name); // Fare riferimento al link di Spring JPA
 
 	public List<City> findByCodiceNazione(String codice);
@@ -21,7 +22,9 @@ public interface CityRepository extends JpaRepository<City, Long> { // City e' i
 	@Query(value = "select x from City x where x.codiceNazione = ?1")
 	public List<City> findCitiesByCodiceNazione(String codNaz);
 
+	@Query(value = "select * from city where CountryCode = ?1", nativeQuery = true)
+	public List<City> findCitiesByCodiceNazioneNative(String codNaz);
+
 	@Query(value = "select x from City x where x.population > ?1 and x.population < ?2")
 	public List<City> findCitiesByPopulation(Integer minPop, Integer maxPop);
-
 }
